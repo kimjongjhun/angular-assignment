@@ -1,0 +1,16 @@
+<p> LEDGER </p>
+
+<table class="table">
+    <thead>
+    <tr>
+        <th>Item Name</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-repeat="item in vm.itemList">
+        <td>{{item.name}}</td>
+        <td>{{item.displayPrice}}</td>
+    </tr>
+    </tbody>
+</table>
