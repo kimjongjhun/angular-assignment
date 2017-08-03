@@ -1,3 +1,11 @@
 <p> TAX </p>
 
-<p> Tax Rate: </p>
+<div class="input-group">
+    <span class="input-group-addon">
+        Tax Rate:
+    </span>
+    <input type="text" class="form-control" placeholder="">
+    <span class="input-group-btn">
+        <button class="btn btn-default" type="button" ng-click="vm.recalculate()">Recalculate</button>
+    </span>
+</div><!-- /input-group -->
