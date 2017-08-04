@@ -15,9 +15,11 @@ function LedgerController(ledgerService) {
     });
 
     this.totalPrice;
+    this.itemList;
 
     function $onInit() {
         console.log(this.dummyData);
+        this.itemList = this.dummyData;
         this.totalPrice = ledgerService.getTotalPrice(this.dummyData);
     }
 }
