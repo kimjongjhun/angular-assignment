@@ -1,19 +1,22 @@
 angular
     .module('app.ledger', [])
     .component('ledger', {
-        bindings: {},
+        bindings: {
+            'dummyData': '<'
+        },
         controller: ['$http', LedgerController],
-        controllerAs: 'vm',
         templateUrl: 'components/ledger/ledger.html'
     });
 
 function LedgerController($http) {
-    var vm = this;
-    vm.itemList = [];
+    angular.extend(this, {
+        $onInit: $onInit,
+    });
 
-    $http.get('/angular-assignment/app/dummy.json')
-        .then(function (result) {
-            vm.itemList = result.data;
-            console.log(vm.itemList);
-        });
+    this.itemList = [];
+
+    function $onInit() {
+        this.itemList = this.dummyData;
+        console.log('in on init', this.itemList);
+    }
 }

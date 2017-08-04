@@ -2,18 +2,20 @@ angular
     .module('app.tax', [])
     .component('tax', {
         bindings: {},
-        controller: [TaxController],
-        controllerAs: 'vm',
+        controller: ['$scope', 'taxService', TaxController],
         templateUrl: 'components/tax/tax.html'
     });
 
-function TaxController() {
-    var vm = this;
-    angular.extend(vm, {
-        recalculate: recalculate
+function TaxController($scope, taxService) {
+    var tsvm = taxService.vm;
+    angular.extend(this, {
+        recalculate: recalculate,
+        taxRate: taxService.taxRate
     });
 
-    function recalculate () {
-        console.log('recalculating ... ');
+    function recalculate (taxRateInput) {
+        taxService.setTaxRate(taxRateInput);
+        this.taxRate = taxService.getTaxRate();
+        console.log('the tax rate is: ', this.taxRate);
     }
 }

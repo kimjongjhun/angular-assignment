@@ -4,8 +4,8 @@
     <span class="input-group-addon">
         Tax Rate:
     </span>
-    <input type="text" class="form-control" placeholder="">
+    <input type="text" class="form-control" placeholder="{{$ctrl.taxRate}} %" ng-model="taxRateInput">
     <span class="input-group-btn">
-        <button class="btn btn-default" type="button" ng-click="vm.recalculate()">Recalculate</button>
+        <button class="btn btn-default" type="button" ng-click="$ctrl.recalculate(taxRateInput)">Recalculate</button>
     </span>
-</div><!-- /input-group -->
+</div>
