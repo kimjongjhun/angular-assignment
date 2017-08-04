@@ -1,72 +1,66 @@
 angular
     .module('app.parent', [])
     .component('parent', {
-        bindings: {
-
-        },
-        controller: [ParentController],
+        bindings: {},
+        controller: ['taxService', ParentController],
         templateUrl: 'components/parent/parent.html'
     });
 
-function ParentController() {
+function ParentController(taxService) {
     angular.extend(this, {
-            taxRate: 1.05
+        'dummy': [
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            },
+            {
+                'name': 'item name here',
+                'price': '1.00',
+                'displayPrice': '$1.00'
+            }
+        ],
+        'taxRate': taxService.getTaxRate()
     });
 
-    this.dummy = [
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        },
-        {
-            'name': 'item name here',
-            'price': '1.00',
-            'displayPrice': '$1.00'
-        }
-    ];
-
-    function $onChanges() {
-
-    }
 }

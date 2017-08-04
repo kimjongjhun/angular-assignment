@@ -5,8 +5,7 @@ angular
 function taxService() {
     angular.extend(this, {
         setTaxRate: setTaxRate,
-        getTaxRate: getTaxRate,
-        test: test
+        getTaxRate: getTaxRate
     });
 
     this.taxRate = 7;
@@ -17,10 +16,5 @@ function taxService() {
 
     function setTaxRate(newTaxRate) {
         this.taxRate = newTaxRate;
-        console.log('from tax service', this.taxRate);
-    }
-
-    function test() {
-        console.log('test success');
     }
 }

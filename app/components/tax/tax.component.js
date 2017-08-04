@@ -16,6 +16,5 @@ function TaxController($scope, taxService) {
     function recalculate (taxRateInput) {
         taxService.setTaxRate(taxRateInput);
         this.taxRate = taxService.getTaxRate();
-        console.log('the tax rate is: ', this.taxRate);
     }
 }

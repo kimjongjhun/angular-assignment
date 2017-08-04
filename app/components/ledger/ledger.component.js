@@ -2,21 +2,22 @@ angular
     .module('app.ledger', [])
     .component('ledger', {
         bindings: {
-            'dummyData': '<'
+            'dummyData': '<',
+            'totalPrice': '=?totalPrice'
         },
-        controller: ['$http', LedgerController],
+        controller: ['ledgerService', LedgerController],
         templateUrl: 'components/ledger/ledger.html'
     });
 
-function LedgerController($http) {
+function LedgerController(ledgerService) {
     angular.extend(this, {
-        $onInit: $onInit,
+        $onInit: $onInit
     });
 
-    this.itemList = [];
+    this.totalPrice;
 
     function $onInit() {
-        this.itemList = this.dummyData;
-        console.log('in on init', this.itemList);
+        console.log(this.dummyData);
+        this.totalPrice = ledgerService.getTotalPrice(this.dummyData);
     }
 }
