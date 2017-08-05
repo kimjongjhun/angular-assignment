@@ -9,9 +9,10 @@ angular
     });
 
 function TotalController(ledgerService, taxService) {
-    this.totalPrice;
-    this.finalPrice;
-    this.taxRate;
+    var vm = this;
+    vm.totalPrice = 0;
+    vm.finalPrice = 0;
+    vm.taxRate = taxService.taxRate;
 
     angular.extend(this, {
         calc: calc,
@@ -22,26 +23,25 @@ function TotalController(ledgerService, taxService) {
     function calc() {
         changeTax(taxService.taxRate);
         changeTotal(ledgerService.totalPrice);
-        console.log(this.totalPrice, this.taxRate);
-        this.finalPrice = this.totalPrice * this.taxRate;
-        console.log(this.finalPrice);
+        console.log(vm.totalPrice, vm.taxRate);
+        vm.finalPrice = (vm.totalPrice * vm.taxRate).toFixed(2);
     }
 
     function changeTax(newTax) {
-        if (this.taxRate != newTax) {
-            this.taxRate = (taxService.taxRate/100)+1;
-            console.log('changing tax rate', this.taxRate);
+        if (vm.taxRate !== newTax) {
+            vm.taxRate = (taxService.taxRate/100)+1;
+            console.log('changing tax rate', vm.taxRate);
         } else {
-            console.log('no tax rate change', this.taxRate)
+            console.log('no tax rate change', vm.taxRate)
         }
     }
 
     function changeTotal(totalPrice) {
-        if (this.totalPrice != totalPrice) {
-            this.totalPrice = totalPrice;
-            console.log('changing total price', this.totalPrice);
+        if (vm.totalPrice !== totalPrice) {
+            vm.totalPrice = totalPrice;
+            console.log('changing total price', vm.totalPrice);
         } else {
-            console.log('no total price change', this.totalPrice);
+            console.log('no total price change', vm.totalPrice);
         }
     }
 }

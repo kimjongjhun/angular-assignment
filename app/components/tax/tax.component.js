@@ -2,12 +2,11 @@ angular
     .module('app.tax', [])
     .component('tax', {
         bindings: {},
-        controller: ['$scope', 'taxService', TaxController],
+        controller: ['taxService', TaxController],
         templateUrl: 'components/tax/tax.html'
     });
 
-function TaxController($scope, taxService) {
-    var tsvm = taxService.vm;
+function TaxController(taxService) {
     angular.extend(this, {
         recalculate: recalculate,
         taxRate: taxService.taxRate

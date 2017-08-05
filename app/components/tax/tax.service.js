@@ -8,7 +8,7 @@ function taxService() {
         getTaxRate: getTaxRate
     });
 
-    this.taxRate = 7;
+    this.taxRate = 1.07;
 
     function getTaxRate() {
         return this.taxRate;
