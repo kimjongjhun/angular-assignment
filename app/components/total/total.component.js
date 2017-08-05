@@ -14,43 +14,34 @@ function TotalController(ledgerService, taxService) {
     this.taxRate;
 
     angular.extend(this, {
-        $onInit: $onInit,
-        $onChanges: $onChanges,
         calc: calc,
         changeTax: changeTax,
         changeTotal: changeTotal
     });
 
-    function $onInit() {
-        this.tax = taxService.taxRate/100;
-        calc();
-    }
-
-    function $onChanges() {
-        console.log(this.taxRate);
-        this.tax = this.taxRate;
-        calc();
-    }
-
     function calc() {
         changeTax(taxService.taxRate);
-        changeTotal();
-        console.log(this.totalPrice, this.tax);
-        this.finalPrice = this.totalPrice * this.tax;
+        changeTotal(ledgerService.totalPrice);
+        console.log(this.totalPrice, this.taxRate);
+        this.finalPrice = this.totalPrice * this.taxRate;
         console.log(this.finalPrice);
     }
 
     function changeTax(newTax) {
         if (this.taxRate != newTax) {
-            this.taxRate = taxService.taxRate/100;
+            this.taxRate = (taxService.taxRate/100)+1;
             console.log('changing tax rate', this.taxRate);
         } else {
-            console.log('no tax rate change')
+            console.log('no tax rate change', this.taxRate)
         }
     }
 
-    function changeTotal() {
-        this.totalPrice = ledgerService.totalPrice;
-        console.log('checking total price', this.totalPrice);
+    function changeTotal(totalPrice) {
+        if (this.totalPrice != totalPrice) {
+            this.totalPrice = totalPrice;
+            console.log('changing total price', this.totalPrice);
+        } else {
+            console.log('no total price change', this.totalPrice);
+        }
     }
 }

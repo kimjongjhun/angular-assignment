@@ -15,6 +15,8 @@ function taxService() {
     }
 
     function setTaxRate(newTaxRate) {
-        this.taxRate = newTaxRate;
+        if (newTaxRate) {
+            this.taxRate = newTaxRate;
+        }
     }
 }
